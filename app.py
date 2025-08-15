@@ -1,12 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 
 # Create an instance of the Flask class
 app = Flask(__name__)
 
 # Define a route for the home page ("/")
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+def home():
+    return render_template("Home.html")
 
 # Run the application if this script is executed directly
 if __name__ == "__main__":
