@@ -6,7 +6,11 @@ app = Flask(__name__)
 # Define a route for the home page ("/")
 @app.route("/")
 def home():
-    return render_template("Home.html")
+    jobs = load_workout_from_db()  # Load jobs from the database using the function imported from database.py
+    # return render_template(Home.html)
+    return render_template("Home.html", works=works, company_name='Impulse')
+    # some website allows access to dynamic data using API
+    # Json is simply JavaScript objects
 
 @app.route("/admin")  # URL error isliye aya admin ko register karna padega agar urlfor ka jinja tag use kar rha ho
 def admin():           # Function name

@@ -1,13 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulse GYM</title>
     {% include 'bootstrap.html' %}
+    <style>
+        .banner {
+            display: flex;
+        }
+
+        .banner .text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px;
+            flex: 1;
+        }
+
+        .banner .introImg {
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            padding-top: 22px;
+        }
+
+        .GymIntro {
+            height: auto;
+            width: 40vw;
+            /* max-width: 100%; */
+            object-fit: cover;
+            /*contain pe border radius nahi lagta hai*/
+            border-radius: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .GymIntro {
+                width: 80vw;
+                /* Adjust width for smaller screens */
+            }
+        }
+    </style>
 </head>
+
 <body>
     {% include 'nav.html' %}
-    
+    <div class="banner">
+        <div class="text">
+            <h1>Welcome to Impulse GYM</h1>
+            <p>Join the best fitness programs!</p>
+            <a href="#" class="btn btn-outline-dark">Join Now</a>
+        </div>
+        <div class="introImg">
+            <img src="{{ url_for('static', filename='gym_intro.png') }}" alt="Gym Intro" class="GymIntro">
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <h4>“Transform your body, mind, and lifestyle</h4>
+        <h4>with our world-class</h4>
+        <h4>fitness programs."</h4>
+        <h4 class="mt-5">"Scroll down to explore the right workout for you!"</h4>
+    </div>
+    <div class="container mt-5">
+        <div class="mb-5">
+            <h1>Our Services</h1>
+            <p style="font-style: italic;font-size: large;">"We offer a variety of fitness programs tailored to your
+                needs."</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Personal Training --></h3>
+                <p>Get personalized training plans from our expert trainers.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Group Classes --></h3>
+                <p>Join our group classes for a fun and engaging workout experience.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Nutrition Guidance --></h3>
+                <p>Receive nutrition advice to complement your fitness journey.</p>
+            </div>
+        </div>
+        <div class="membership mt-5">
+            <h1>Step Into Strength</h1>
+            <p style="font-style: italic;font-size: large;">"Choose a plan that suits your fitness goals."</p>
+            <div class="chart">
+                {% include 'applyChartCard.html' %}
+                <div class="cardContainer">
+                    <div class="imgContainer">
+                        <img src="{{ url_for('static', filename='Yoga.png') }}" alt="Yoga Img">
+                    </div>
+                    <div class="textContainer">
+                        <h3 class="mt-1">Yoga</h3>
+                        <p class="text-center" style="font-style: italic;font-weight:5000;">Enhance your flexibility and
+                            mental well-being.</p>
+                        <ul class="mb-2">
+                            <li>Duration: 45 mins/session</li>
+                            <li>Level: Beginner to Intermediate</li>
+                            <li>Focus: Flexibility, Balance, Mindfulness</li>
+                        </ul>
+                    </div>
+                    <div class="but">
+                        <a href="" class="btn btn-outline-dark">Apply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>

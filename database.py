@@ -11,5 +11,7 @@ engine = create_engine(db_url, echo=True)
 def show_jobs():
     with engine.connect() as conn:
         result = conn.execute(text("SELECT * FROM jobs"))
+        exercise = []
         for row in result.all():
-            print(dict(row._mapping))
+            exercise.append(row._asdict())
+            return exercise
