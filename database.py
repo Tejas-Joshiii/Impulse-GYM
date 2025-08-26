@@ -27,3 +27,14 @@ def load_workout_from_db():
         for row in result.all():
             exercise.append(row._asdict())
         return exercise
+
+def load_workouts_from_db(id):
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM exercise WHERE id = :val"), {"val": id})
+        rows = result.all()
+        if len(rows) == 0:
+            return None
+        else:
+            return rows[0]._asdict() # is list ka pehla tuple return kar raha hai us id no ki information
+
+            

@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{company_name}}</title>
+    {% include 'bootstrap.html' %}
 </head>
 <body>
-    
+    {% include 'nav.html' %}
+    <div class="container">
+        <h1 class="text-center mt-2 mb-4">Impulse Gym</h1>
+        <h3 class="mb-2">{{worked.name}}</h3>
+        <p class="lead">{{worked.describe}}</p>
+        <ul class="mb-2" style="list-style-type: square;"">
+            {% for line in worked.detail.split('.') %}
+            <li>{{line.strip()}}</li> {# strip is used to remove extra spaces forward and backward of a line #}
+            {% endfor %}
+        </ul>
+    </div>
+    {% include 'footer.html' %}
 </body>
 </html>

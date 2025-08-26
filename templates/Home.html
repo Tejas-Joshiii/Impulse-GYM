@@ -66,9 +66,7 @@
             <p>Join the best fitness programs!</p>
             <a href="#skip" class="btn btn-outline-dark">Join Now</a>
         </div>
-        <div class="introImg">
-            <img src="{{ url_for('static', filename='gym_intro.png') }}" alt="Gym Intro" class="GymIntro">
-        </div>
+        {% include 'banner.html' %}
     </div>
     <div class="text-center mt-5">
         <h4>“Transform your body, mind, and lifestyle</h4>

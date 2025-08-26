@@ -45,13 +45,14 @@
     <div class="textContainer">
         <h3 class="mt-1">{{work['name']}}</h3>
         <p class="text-center" style="font-style: italic;font-weight:5000;">{{work['quote']}}</p>
-        <ul class="mb-2"> {# it is used here to create bullet points or used to break line #}
+        <ul class="mb-2" style="list-style-type: square;"> {# it is used here to create bullet points or used to break line #}
             {% for line in work.detail.split('.') %}
             <li>{{line.strip()}}</li> {# strip() is used to remove any extra spaces #}
             {% endfor %}
         </ul>      
     </div>
     <div class="but">
-        <a href="" class="btn btn-outline-dark apply">Apply</a>
+        <a href="/excercisePage/{{work['id']}}" class="btn btn-outline-dark apply">Apply</a>
+        {# work pass ho rha hai isme so id work variable mei hogi is exercise program ke liye #}
     </div>
 </div>
