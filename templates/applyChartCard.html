@@ -1,18 +1,19 @@
 {% include 'bootstrap.html' %}
-<style>    
+<style>
     .cardContainer {
-        background-color: rgb(239, 238, 225);
+        background-color:whitesmoke;
+        box-shadow:  4px 11px 13px 1px;
         width: 308px;
-        height: 418px;
+        height: auto;
         border-radius: 10px;
-        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
     .imgContainer {
         margin-bottom: 10px;
         display: flex;
         justify-content: center;
-    }    
+    }
 
     .cardContainer img {
         margin-top: 8px;
@@ -21,6 +22,7 @@
         object-fit: cover;
         border-radius: 10px;
     }
+
     .textContainer {
         font-size: medium;
         padding: 0 8px;
@@ -29,5 +31,27 @@
     .but {
         display: flex;
         justify-content: center;
+
+    }
+
+    .apply{
+        margin-bottom: 10px;      
     }
 </style>
+<div class="cardContainer">
+    <div class="imgContainer">
+        <img src="{{ url_for('static', filename=work['image_url']) }}" alt="Yoga Img"> {#url for mei jinja tag mei curly braces nahi use karte hai #}
+    </div>
+    <div class="textContainer">
+        <h3 class="mt-1">{{work['name']}}</h3>
+        <p class="text-center" style="font-style: italic;font-weight:5000;">{{work['quote']}}</p>
+        <ul class="mb-2"> {# it is used here to create bullet points or used to break line #}
+            {% for line in work.detail.split('.') %}
+            <li>{{line.strip()}}</li> {# strip() is used to remove any extra spaces #}
+            {% endfor %}
+        </ul>      
+    </div>
+    <div class="but">
+        <a href="" class="btn btn-outline-dark apply">Apply</a>
+    </div>
+</div>

@@ -8,10 +8,22 @@ os.makedirs("db", exist_ok=True)  # ensure folder exists
 db_url = os.getenv("db_connection")
 engine = create_engine(db_url, echo=True)
 
-def show_jobs():
+def init_db():
     with engine.connect() as conn:
-        result = conn.execute(text("SELECT * FROM jobs"))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS exercise (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                quote TEXT,
+                detail INT
+            )
+        """))
+        conn.commit()
+
+def load_workout_from_db():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM exercise"))
         exercise = []
         for row in result.all():
             exercise.append(row._asdict())
-            return exercise
+        return exercise

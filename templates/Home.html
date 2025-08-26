@@ -48,6 +48,13 @@
                 /* Adjust width for smaller screens */
             }
         }
+
+        .chart { /* you can use grid with media queries also see ultratech page ex at sigmawebdev folder*/
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
     </style>
 </head>
 
@@ -57,7 +64,7 @@
         <div class="text">
             <h1>Welcome to Impulse GYM</h1>
             <p>Join the best fitness programs!</p>
-            <a href="#" class="btn btn-outline-dark">Join Now</a>
+            <a href="#skip" class="btn btn-outline-dark">Join Now</a>
         </div>
         <div class="introImg">
             <img src="{{ url_for('static', filename='gym_intro.png') }}" alt="Gym Intro" class="GymIntro">
@@ -92,26 +99,12 @@
         <div class="membership mt-5">
             <h1>Step Into Strength</h1>
             <p style="font-style: italic;font-size: large;">"Choose a plan that suits your fitness goals."</p>
-            <div class="chart">
+            <div class="chart mb-5" id="skip">
+                {# Read kuch gadbad title in notes #}
+                {% for work in works %} {# yha works variable se data read karenge database se ek ek karke na ki ek sath saari id read then individually daalenge card mei na toh ek sath works mei nahi ho skta #}
                 {% include 'applyChartCard.html' %}
-                <div class="cardContainer">
-                    <div class="imgContainer">
-                        <img src="{{ url_for('static', filename='Yoga.png') }}" alt="Yoga Img">
-                    </div>
-                    <div class="textContainer">
-                        <h3 class="mt-1">Yoga</h3>
-                        <p class="text-center" style="font-style: italic;font-weight:5000;">Enhance your flexibility and
-                            mental well-being.</p>
-                        <ul class="mb-2">
-                            <li>Duration: 45 mins/session</li>
-                            <li>Level: Beginner to Intermediate</li>
-                            <li>Focus: Flexibility, Balance, Mindfulness</li>
-                        </ul>
-                    </div>
-                    <div class="but">
-                        <a href="" class="btn btn-outline-dark">Apply</a>
-                    </div>
-                </div>
+                {% endfor %}
+                {# yha loop work variable se ek ek data read karke har ek card mei lagayenge image url sahit abe url mei ex:- Yoga.png and all hi hoga database mei #}            
             </div>
         </div>
 </body>
