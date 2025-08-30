@@ -17,6 +17,10 @@
             <li>{{line.strip()}}</li> {# strip is used to remove extra spaces forward and backward of a line #}
             {% endfor %}
         </ul>
+        <blockquote class="text-center" style=" font-size: larger;font-style: italic;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">"{{worked.quote}}"</blockquote>
+        <div class="buttonMember text-center">
+            <a href="/applicationForm/{{worked['id']}}" class="btn btn-dark">Go to Membership Form</a>
+        </div>
     </div>
     {% include 'footer.html' %}
 </body>

@@ -38,21 +38,22 @@
         margin-bottom: 10px;      
     }
 </style>
-<div class="cardContainer">
+<body>
+    <div class="cardContainer">
     <div class="imgContainer">
-        <img src="{{ url_for('static', filename=work['image_url']) }}" alt="Yoga Img"> {#url for mei jinja tag mei curly braces nahi use karte hai #}
+        <img src="{{ url_for('static', filename=work.image_url) }}" alt="Img">
     </div>
     <div class="textContainer">
         <h3 class="mt-1">{{work['name']}}</h3>
         <p class="text-center" style="font-style: italic;font-weight:5000;">{{work['quote']}}</p>
-        <ul class="mb-2" style="list-style-type: square;"> {# it is used here to create bullet points or used to break line #}
+        <ul class="mb-2">
             {% for line in work.detail.split('.') %}
-            <li>{{line.strip()}}</li> {# strip() is used to remove any extra spaces #}
+            <li>{{line.strip()}}</li> {# strip is used to remove extra spaces forward and backward of a line #}
             {% endfor %}
-        </ul>      
-    </div>
+        </ul>
+    </div>    
     <div class="but">
-        <a href="/excercisePage/{{work['id']}}" class="btn btn-outline-dark apply">Apply</a>
-        {# work pass ho rha hai isme so id work variable mei hogi is exercise program ke liye #}
+        <a href="/exercisePage/{{work['id']}}" type="button" class="btn btn-outline-dark">Apply</a>
     </div>
 </div>
+</body>

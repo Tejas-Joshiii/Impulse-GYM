@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted</title>
+    {% include 'bootstrap.html' %}
+    <style>
+        .container{
+            display: flex;
+        }
+
+        .message{
+            flex: 1;
+        }
+
+        .namestelogo{
+            width: 200px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="container">
+        <div class="message">
+            <h2>Your membership form has been submitted</h2>
+        </div>
+        <div class="namestelogo">
+            <img src="welcomeLogo.png" alt="welcome logo">
+        </div>
+    </div>
+</body>
+</html>
