@@ -50,13 +50,13 @@ def loadApplicationPage(id):
 @app.route("/exercisePage/<mem_id>/submit_membership", methods=["POST"]) # id jagah kux aur naam dedo mem_id mei value work['id'] se pass hogi variable ka kaam kar rha hai jo bhi <id> hai inme kahi na kahi se value pass ho rhi hai
 def feed_membership(mem_id):
     data = request.form # request.args bhi data leta hai but data url mei visible hota hai yeh data ko browser requests directly url ko post karta hai aur data access hota request.form se
-    work = load_workouts_from_db(mem_id)
+    # work = load_workouts_from_db(mem_id)
     # print(dict(request.form))
-    add_membershipTodb(mem_id, data)
+    add_membershipTodb(mem_id, data) # yha se data load hoga database mei
     # return "Membership added successfully ✅"
     # data = request.args   # yeh output Flask console me aana chahiye
     # return jsonify(data
-    return render_template("formSubmitted.html", application=data, working=work)
+    return render_template("formSubmitted.html", application=data) # help in displying submitted data on this html page
 
 
 # Run the application if this script is executed directly

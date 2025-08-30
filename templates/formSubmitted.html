@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Submitted</title>
     {% include 'bootstrap.html' %}
     <style>
-        .container{
+        .container {
             display: flex;
         }
 
-        .message{
+        .message {
             flex: 1;
         }
 
-        .namestelogo{
+        .namestelogo {
             width: 200px;
             flex: 1;
         }
+
+        .datas{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .welcomeLogo{
+            width: 400px;
+            margin-left: 80px;
+        }
     </style>
 </head>
+
 <body>
     {% include 'nav.html' %}
+    <h1 class="heading text-center" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: bolder;margin: 60px;">
+        Impulse Gym 
+    </h1>    
     <div class="container">
         <div class="message">
             <h2>Your membership form has been submitted</h2>
+            <div class="datas">
+                <b>Name :- {{application['fullName']}}</b>
+                <b>Email id :- {{application['emailId']}}</b>
+                <b>Phone number :- {{application['phoneNo']}}</b>
+                <b>Address :- {{application['address']}}</b>
+                <b>Membership Type :- {{application['membershipType']}}</b>
+            </div>
         </div>
         <div class="namestelogo">
-            <img src="welcomeLogo.png" alt="welcome logo">
+            <img src="{{url_for('static', filename='welcomeLogo.png')}}" alt="welcome logo" class="welcomeLogo">
         </div>
     </div>
 </body>
+
 </html>
