@@ -16,14 +16,15 @@
             max-width: 700px;
             background-color: var(--back-color);
             border-radius: 20px;
-            flex: 1; /* takes available space */
+            flex: 1;
+            /* takes available space */
             /* padding: 20px; */
             /* margin-top: 30px; */
             box-shadow: 4px 11px 13px 1px;
         }
 
         .card {
-            padding: 20px 22px;           
+            padding: 20px 22px;
             margin: 0 15px;
             margin-bottom: 24px;
         }
@@ -33,20 +34,38 @@
             gap: 30px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 969px) {
             .line1 {
                 flex-direction: column;
             }
         }
 
-        .superContainer{
+        .superContainer {
             display: flex;
             margin: 50px 20px;
         }
 
-        .bodyImg{
+        @media (max-width: 910px) {
+
+            /* Hide image on small devices */
+            .bodyImg {
+                display: none;
+            }
+        }
+
+        .bodyImg {
             flex: 1;
             margin-left: 44px;
+        }
+
+        .bodyImg2{
+            display: none;
+        }
+
+        @media (max-width: 910px){
+            .bodyImg2{
+                display: block;
+            }
         }
     </style>
 </head>
@@ -62,7 +81,7 @@
 
             <div class="card">
                 <form action=""></form>
-            <form action="/exercisePage/{{work['id']}}/submit_membership" method="post">
+                <form action="/exercisePage/{{work['id']}}/submit_membership" method="post">
 
                     <!-- Full Name + Email -->
                     <div class="line1">
@@ -111,8 +130,12 @@
             </div>
         </div>
         <div class="bodyImg">
-            <img src="{{url_for('static', filename='muscleForm.png')}}" alt="muscleForm img" style="width: 400px;border-radius: 22px;margin-left: 100px;">
+            <img src="{{url_for('static', filename='muscleForm.png')}}" alt="muscleForm img"
+                style="width: 400px;border-radius: 22px;margin-left: 100px;">
         </div>
+        <!-- <div class="bodyImg2">
+            <img src="{{url_for('static', filename='liftLogo.png')}}" alt="liftLogo Img" style="width: 400px;border-radius: 22px;margin-left: 100px;">    
+        </div> -->
     </div>
 
 </body>

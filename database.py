@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 
 load_dotenv()
-os.makedirs("db", exist_ok=True)  # ensure folder exists
+os.makedirs("db", exist_ok=True)  # ensure database folder exists
 
 db_url = os.getenv("db_connection")
 engine = create_engine(db_url, echo=True)
@@ -62,3 +62,31 @@ def add_membershipTodb(mem_id, data):
                 }) # conn.execute ham pakra deta hai in variable me data through data['fullName'] then insert into wale m values m data hota hai na ki koi class ya css se relation hai
 
 print("Using DB file at:", os.path.abspath("db/mydb.db"))
+
+def create_tables():
+    with engine.begin() as conn:
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS trial_memberships (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT NOT NULL,
+                trial_plan_id INTEGER NOT NULL,
+                preferred_date DATE NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """))
+
+def insert_trial_membership(name, email, phone, plan_id, preferred_date):
+    """Insert a trial membership booking into the database"""
+    with engine.begin() as conn:
+        conn.execute(text("""
+            INSERT INTO trial_memberships (name, email, phone, trial_plan_id, preferred_date)
+            VALUES (:name, :email, :phone, :plan_id, :preferred_date)
+        """), {
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "plan_id": plan_id,
+            "preferred_date": preferred_date
+        })

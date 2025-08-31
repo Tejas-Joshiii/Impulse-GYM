@@ -1,5 +1,6 @@
-from flask import Flask, render_template, url_for, request, jsonify
-from database import load_workout_from_db, init_db, load_workouts_from_db, add_membershipTodb  # Import the function to load workouts from the database
+from flask import Flask, render_template, url_for, request, jsonify,  flash, redirect
+from database import load_workout_from_db, init_db, load_workouts_from_db, add_membershipTodb,insert_trial_membership, create_tables  # Import the function to load workouts from the database
+import os
 
 init_db() # yeh function initializes the database and creates the table if it doesn't exist and also create .db file but not db folder
 print("Database initialized ✅")
@@ -58,6 +59,28 @@ def feed_membership(mem_id):
     # return jsonify(data
     return render_template("formSubmitted.html", application=data) # help in displying submitted data on this html page
 
+@app.route("/membershipDetails")
+def load_navMembership():
+    return render_template("navMembership.html")
+
+
+app.secret_key = os.getenv("SECRET_KEY", "fallback_key") # yeh flash ke liye banani padti hai security ke liye
+@app.route("/trial", methods=["GET", "POST"])
+def trial_form():
+    if request.method == "POST":
+        name = request.form["name"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        plan_id = request.form["plan_id"]
+        preferred_date = request.form["preferred_date"]
+
+        insert_trial_membership(name, email, phone, plan_id, preferred_date)
+        flash("Trial class booked successfully!", "success")
+        return render_template("trialBooked.html")   # redirect nahi, direct render
+    
+    return render_template("trial_form.html")
+
+create_tables()
 
 # Run the application if this script is executed directly
 if __name__ == "__main__":
