@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, jsonify,  flash, redirect
-from database import load_workout_from_db, init_db, load_workouts_from_db, add_membershipTodb,insert_trial_membership, create_tables  # Import the function to load workouts from the database
+from database import load_workout_from_db, init_db, load_workouts_from_db, add_membershipTodb,insert_trial_membership, create_tables, load_all_trainers  # Import the function to load workouts from the database
 import os
 
 init_db() # yeh function initializes the database and creates the table if it doesn't exist and also create .db file but not db folder
@@ -79,6 +79,11 @@ def trial_form():
         return render_template("trialBooked.html")   # redirect nahi, direct render
     
     return render_template("trial_form.html")
+
+@app.route("/trainerCard")
+def trainer_card():
+    load = load_all_trainers()
+    return render_template("trainerInfo.html", info=load)
 
 create_tables()
 

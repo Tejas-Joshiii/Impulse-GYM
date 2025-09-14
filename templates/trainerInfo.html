@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer Information</title>
+
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="trainerInfo">
+        <div class="cardTrainer">
+        {% for infos in info %}
+        {% include 'trainerCard.html' %}
+        {% endfor %}
+        </div>       
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

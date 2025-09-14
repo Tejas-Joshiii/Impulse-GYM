@@ -90,3 +90,11 @@ def insert_trial_membership(name, email, phone, plan_id, preferred_date):
             "plan_id": plan_id,
             "preferred_date": preferred_date
         })
+
+def load_all_trainers():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM Trainer_info"))
+        trainer = []
+        for row in result.all():
+            trainer.append(row._asdict())
+        return trainer
